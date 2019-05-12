@@ -337,8 +337,8 @@ func (r *HTMLRenderer) RenderText(block *notionapi.Block, entering bool) bool {
 }
 
 func (r *HTMLRenderer) RenderEquation(block *notionapi.Block, entering bool) bool {
-	source := html.EscapeString(block.Source)
-	s := fmt.Sprintf(`$$%s$$`, source)
+	title := html.EscapeString(block.Title)
+	s := fmt.Sprintf(`$$%s$$`, title)
 	r.WriteString(s)
 	return true
 	
