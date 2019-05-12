@@ -329,6 +329,15 @@ func (r *HTMLRenderer) RenderPage(block *notionapi.Block, entering bool) bool {
 }
 
 // RenderText renders BlockText
+func (r *HTMLRenderer) RenderEquation(block *notionapi.Block, entering bool) bool {
+	r.WriteIndent()
+	r.WriteString(`$$')
+	attrs := []string{"class", "notion-text"}
+	r.WriteElement(block, "div", attrs, "", entering)
+	return true
+}
+
+// RenderText renders BlockText
 func (r *HTMLRenderer) RenderText(block *notionapi.Block, entering bool) bool {
 	attrs := []string{"class", "notion-text"}
 	r.WriteElement(block, "div", attrs, "", entering)
@@ -758,6 +767,8 @@ func (r *HTMLRenderer) DefaultRenderFunc(blockType string) BlockRenderFunc {
 		return r.RenderFile
 	case notionapi.BlockPDF:
 		return r.RenderPDF
+	case notionapi.equation:
+		return r.RenderEquation
 	default:
 		maybePanic("DefaultRenderFunc: unsupported block type '%s' in %s\n", blockType, r.Page.NotionURL())
 	}
