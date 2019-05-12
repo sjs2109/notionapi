@@ -59,6 +59,8 @@ const (
 	BlockTweet = "tweet"
 	// BlockEmbed is a generic oembed link
 	BlockEmbed = "embed"
+	// BlockEquation is a math equation
+	BlockEquation = "equation"
 )
 
 // for CollectionColumnInfo.Type
