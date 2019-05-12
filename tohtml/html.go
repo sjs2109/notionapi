@@ -336,6 +336,17 @@ func (r *HTMLRenderer) RenderText(block *notionapi.Block, entering bool) bool {
 	return true
 }
 
+func (r *HTMLRenderer) RenderEquation(block *notionapi.Block, entering bool) bool {
+	source := html.EscapeString(block.Source)
+	s := fmt.Sprintf(`$$%s$$`, source)
+	r.WriteString(s)
+	return true
+	
+	
+	
+	return true
+}
+
 // RenderNumberedList renders BlockNumberedList
 func (r *HTMLRenderer) RenderNumberedList(block *notionapi.Block, entering bool) bool {
 	if entering {
@@ -760,7 +771,7 @@ func (r *HTMLRenderer) DefaultRenderFunc(blockType string) BlockRenderFunc {
 	case notionapi.BlockPDF:
 		return r.RenderPDF
 	case notionapi.BlockEquation:
-		return r.RenderText
+		return r.RenderEquation
 	default:
 		maybePanic("DefaultRenderFunc: unsupported block type '%s' in %s\n", blockType, r.Page.NotionURL())
 	}
