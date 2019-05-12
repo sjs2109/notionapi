@@ -8,7 +8,7 @@ You can then e.g. convert that format to HTML.
 
 Documentation:
 * [getting started tutorial](https://www.programming-books.io/essential/go/db2797b0772a42fca5820014164589a7)
-* [API docs](https://godoc.org/github.com/kjk/notionapi)
+* [API docs](https://godoc.org/github.com/sjs2109/notionapi)
 
 You can learn how [I reverse-engineered the Notion API](https://blog.kowalczyk.info/article/88aee8f43620471aa9dbcad28368174c/how-i-reverse-engineered-notion-api.html) in order to write this library.
 
@@ -20,7 +20,7 @@ Notion serves as a CMS (Content Management System). I write and edit pages in No
 
 I use custom Go program to download Notion pages using this this library and converts pages to HTML. It then publishes the result to Netlify.
 
-You can see the code at https://github.com/kjk/blog and https://github.com/essentialbooks/books/
+You can see the code at https://github.com/sjs2109/blog and https://github.com/essentialbooks/books/
 
 # Implementations for other languages
 

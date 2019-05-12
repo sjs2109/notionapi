@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/kjk/notionapi"
-	"github.com/kjk/notionapi/tohtml"
+	"github.com/sjs2109/notionapi"
+	"github.com/sjs2109/notionapi/tohtml"
 )
 
 const (

@@ -8,7 +8,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/kjk/notionapi"
+	"github.com/sjs2109/notionapi"
 )
 
 const (
@@ -168,7 +168,7 @@ func testGist() {
 	assert(len(blocks) == 1, "expected 1 block, got %d", len(blocks))
 	block := blocks[0]
 	src := block.Source
-	assert(src == "https://gist.github.com/kjk/7278df5c7b164fce3c949af197c961eb", "unexpected Source '%s'", src)
+	assert(src == "https://gist.github.com/sjs2109/7278df5c7b164fce3c949af197c961eb", "unexpected Source '%s'", src)
 }
 
 func testChangeFormat() {

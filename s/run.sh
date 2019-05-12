@@ -2,7 +2,7 @@
 set -u -e -o pipefail
 
 mkdir -p log
-go build github.com/kjk/notionapi/cmd/tohtml
+go build github.com/sjs2109/notionapi/cmd/tohtml
 # https://www.notion.so/kjkpublic/Test-page-c969c9455d7c4dd79c7f860f3ace6429
 # https://www.notion.so/kjkpublic/Test-page-text-4c6a54c68b3e4ea2af9cfaabcc88d58d
 # https://www.notion.so/kjkpublic/Test-page-text-not-simple-f97ffca91f8949b48004999df34ab1f7

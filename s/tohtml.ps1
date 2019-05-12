@@ -14,6 +14,6 @@
 # and opens browser with that page
 
 Remove-Item -Force -ErrorAction Ignore ./test.exe
-go build -o test.exe github.com/kjk/notionapi/cmd/test
+go build -o test.exe github.com/sjs2109/notionapi/cmd/test
 ./test.exe -tohtml $args
 Remove-Item -Force -ErrorAction Ignore ./test.exe

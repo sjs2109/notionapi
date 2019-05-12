@@ -8,7 +8,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/kjk/notionapi"
+	"github.com/sjs2109/notionapi"
 )
 
 func maybePanic(format string, args ...interface{}) {

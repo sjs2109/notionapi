@@ -1,4 +1,4 @@
-module github.com/kjk/notionapi
+module github.com/sjs2109/notionapi
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect

@@ -3,7 +3,7 @@ package tohtml
 import (
 	"testing"
 
-	"github.com/kjk/notionapi"
+	"github.com/sjs2109/notionapi"
 	"github.com/stretchr/testify/assert"
 )
 
