@@ -771,7 +771,7 @@ func (r *HTMLRenderer) DefaultRenderFunc(blockType string) BlockRenderFunc {
 	case notionapi.BlockPDF:
 		return r.RenderPDF
 	case notionapi.BlockEquation:
-		return r.RenderCode
+		return r.RenderQuote
 	default:
 		maybePanic("DefaultRenderFunc: unsupported block type '%s' in %s\n", blockType, r.Page.NotionURL())
 	}
