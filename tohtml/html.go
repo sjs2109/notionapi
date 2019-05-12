@@ -222,6 +222,10 @@ func (r *HTMLRenderer) RenderInline(b *notionapi.InlineBlock) {
 		start += `<code class="notion-code-inline">`
 		close += `</code>`
 	}
+	if b.AttrFlags&notionapi.AttrCode != 0{
+		start += `$$`
+		close += `$$`
+	}
 	skipText := false
 	// TODO: colors
 	if b.Link != "" {
@@ -333,17 +337,6 @@ func (r *HTMLRenderer) RenderPage(block *notionapi.Block, entering bool) bool {
 func (r *HTMLRenderer) RenderText(block *notionapi.Block, entering bool) bool {
 	attrs := []string{"class", "notion-text"}
 	r.WriteElement(block, "div", attrs, "", entering)
-	return true
-}
-
-func (r *HTMLRenderer) RenderEquation(block *notionapi.Block, entering bool) bool {
-	title := html.EscapeString(block.Title)
-	s := fmt.Sprintf(`$$%s$$`, title)
-	r.WriteString(s)
-	return true
-	
-	
-	
 	return true
 }
 
@@ -771,7 +764,7 @@ func (r *HTMLRenderer) DefaultRenderFunc(blockType string) BlockRenderFunc {
 	case notionapi.BlockPDF:
 		return r.RenderPDF
 	case notionapi.BlockEquation:
-		return r.RenderQuote
+		return r.RenderText
 	default:
 		maybePanic("DefaultRenderFunc: unsupported block type '%s' in %s\n", blockType, r.Page.NotionURL())
 	}
