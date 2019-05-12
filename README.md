@@ -1,3 +1,4 @@
+This repo is forked from https://godoc.org/github.com/kjk/notionapi
 # About notionapi
 
 This is an unofficial, Go API for https://notion.so. Mostly for reading, limited write capabilities.
