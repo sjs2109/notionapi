@@ -348,7 +348,7 @@ func (r *HTMLRenderer) RenderEquation(block *notionapi.Block, entering bool) boo
 			r.WriteString("</" + tag + ">")
 			r.Newline()
 		}
-		return
+		return true
 	}
 
 	s := "<" + tag
