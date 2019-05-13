@@ -222,10 +222,6 @@ func (r *HTMLRenderer) RenderInline(b *notionapi.InlineBlock) {
 		start += `<code class="notion-code-inline">`
 		close += `</code>`
 	}
-	if b.AttrFlags&notionapi.AttrCode != 0{
-		start += `$`
-		close += `$`
-	}
 	skipText := false
 	// TODO: colors
 	if b.Link != "" {
@@ -339,6 +335,49 @@ func (r *HTMLRenderer) RenderText(block *notionapi.Block, entering bool) bool {
 	r.WriteElement(block, "div", attrs, "", entering)
 	return true
 }
+
+
+// RenderText renders BlockEquation
+func (r *HTMLRenderer) RenderEquation(block *notionapi.Block, entering bool) bool {
+	attrs := []string{"class", "notion-equation"}
+	
+	var tag = "div"
+	if !entering {
+		if !isSelfClosing(tag) {
+			r.WriteIndent()
+			r.WriteString("</" + tag + ">")
+			r.Newline()
+		}
+		return
+	}
+
+	s := "<" + tag
+	nAttrs := len(attrs) / 2
+	for i := 0; i < nAttrs; i++ {
+		a := attrs[i*2]
+		// TODO: quote value if necessary
+		v := attrs[i*2+1]
+		s += fmt.Sprintf(` %s="%s"`, a, v)
+	}
+	id := r.maybeGetID(block)
+	if id != "" {
+		s += ` id="` + id + `"`
+	}
+	s += ">"
+	r.WriteIndent()
+	r.WriteString(s)
+	r.Newline()
+	
+	r.WriteString("$$")
+	r.RenderInlines(block.InlineContent)
+	r.WriteString("$$")
+	r.Newline()	
+	
+	
+	return true
+	
+}
+
 
 // RenderNumberedList renders BlockNumberedList
 func (r *HTMLRenderer) RenderNumberedList(block *notionapi.Block, entering bool) bool {
@@ -764,7 +803,7 @@ func (r *HTMLRenderer) DefaultRenderFunc(blockType string) BlockRenderFunc {
 	case notionapi.BlockPDF:
 		return r.RenderPDF
 	case notionapi.BlockEquation:
-		return r.RenderText
+		return r.RenderEquation
 	default:
 		maybePanic("DefaultRenderFunc: unsupported block type '%s' in %s\n", blockType, r.Page.NotionURL())
 	}
