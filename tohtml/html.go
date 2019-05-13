@@ -223,8 +223,8 @@ func (r *HTMLRenderer) RenderInline(b *notionapi.InlineBlock) {
 		close += `</code>`
 	}
 	if b.AttrFlags&notionapi.AttrCode != 0{
-		start += `$$`
-		close += `$$`
+		start += `$`
+		close += `$`
 	}
 	skipText := false
 	// TODO: colors
