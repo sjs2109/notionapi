@@ -496,6 +496,9 @@ func (r *HTMLRenderer) RenderQuote(block *notionapi.Block, entering bool) bool {
 	cls := "notion-quote"
 	attrs := []string{"class", cls}
 	r.WriteElement(block, "quote", attrs, "", entering)
+	r.Newline()
+	r.WriteString("<p></p>") //BlockQuote가 연속으로 나오는 경우 
+	r.Newline()	
 	return true
 }
 
